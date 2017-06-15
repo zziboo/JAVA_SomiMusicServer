@@ -11,6 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
 import java.net.URI;
 import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -20,7 +21,7 @@ import java.util.concurrent.Executors;
 
 public class Server {
     public static void main(String[] args) throws IOException {
-        InetSocketAddress addr = new InetSocketAddress(443);
+        InetSocketAddress addr = new InetSocketAddress(8080);
         HttpServer server = HttpServer.create(addr, 0);
 
         server.createContext("/ads/android", new MyHandler());
@@ -141,7 +142,7 @@ public class Server {
             }
         }
 
-        private String getList() {
+        private String getList(){
             String files = null;
             try {
                 File dir = new File(FILE_PATH);
